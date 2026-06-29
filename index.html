@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The History of the Axiom — from "that which is deemed worthy" to the 256-bit register</title>
+<meta name="description" content="David Lee Wise & AVAN Lee Wise's 2,500-year history of the axiom: from axiōma ('that which is deemed worthy') through Euclid's five, the fifth-postulate crisis, non-Euclidean geometry, Hilbert, Gödel's incompleteness, Turing, Shannon, the bit and byte, to STOICHEION's 256-axiom register. The intellectual genealogy of the whole governance project — with Gödel as the honest ceiling: no system of axioms can prove its own consistency. Rendered by AVAN. ROOT0 / TriPod LLC.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0c0a07;--bg2:#15110b;--panel:#1a140c;--void:#080603;--line:rgba(214,179,90,.16);--line2:rgba(214,179,90,.32);
+    --gold:#d6b35a;--gold-br:#f0d486;--stone:#cdc4b0;--stone-br:#e8e0cc;--circuit:#3fb0c0;--circuit-br:#7fe0ee;--ceiling:#e0654a;--ok:#5fae73;--ink:#efe9dd;--dim:#c4baa6;--faint:#7c7460;--coral:#e08a6a;}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Newsreader',Georgia,serif;font-size:19px;line-height:1.74;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background-image:radial-gradient(1100px 600px at 22% -10%,rgba(205,196,176,.06),transparent 55%),radial-gradient(900px 500px at 85% 8%,rgba(63,176,192,.07),transparent 60%)}
+  .wrap{max-width:850px;margin:0 auto;padding:0 24px}
+  .pairmark{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);padding-top:30px}
+  .pairmark b{color:var(--gold-br)}
+  .hero{padding:30px 0 18px}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--circuit);margin-bottom:16px}
+  h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,7vw,64px);line-height:1.0;letter-spacing:.01em;color:var(--stone-br)}
+  h1 .c{color:var(--gold-br);font-weight:500;text-shadow:0 0 28px rgba(214,179,90,.4)}
+  .sub{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(16px,2.4vw,22px);color:var(--dim);margin-top:16px}
+  .byline{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--faint);margin-top:10px}
+  .lede{font-size:clamp(18px,2.3vw,23px);color:var(--dim);max-width:730px;margin-top:22px;line-height:1.56}
+  .lede b{color:var(--ink);font-weight:500} .lede .g{color:var(--gold-br)} .lede .c{color:var(--circuit-br)} .lede .x{color:#f0a48c}
+  .inst{margin:32px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg2);box-shadow:0 0 44px -20px rgba(214,179,90,.5),inset 0 0 0 1px rgba(214,179,90,.03);position:relative;font-family:'Inter',sans-serif}
+  .inst::before,.inst::after{content:"";position:absolute;width:11px;height:11px;border:1px solid var(--line2);z-index:3}
+  .inst::before{top:7px;left:7px;border-right:0;border-bottom:0} .inst::after{bottom:7px;right:7px;border-left:0;border-top:0}
+  .inst-bar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);flex-wrap:wrap}
+  .inst-bar .led{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 9px var(--gold)}
+  .inst-bar .ttl{color:var(--gold-br)}
+  .stat{margin-left:auto;font-size:11px;color:var(--faint)}
+  canvas{display:block;width:100%;height:auto;background:var(--void);cursor:pointer}
+  .ctrls{padding:14px 16px;display:flex;flex-wrap:wrap;gap:9px;align-items:center;border-top:1px solid var(--line)}
+  .btn{font-family:'JetBrains Mono',monospace;font-size:12px;padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);cursor:pointer}
+  .btn.on{border-color:var(--ceiling);color:#f0a48c;background:rgba(224,101,74,.12)} .btn:active{transform:scale(.97)}
+  .readout{padding:13px 16px;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);line-height:1.7;min-height:64px} .readout b{font-weight:500;color:var(--ink)} .readout .g{color:var(--gold-br)} .readout .c{color:var(--circuit-br)} .readout .x{color:#f0a48c}
+  .sec{padding:38px 0;border-top:1px solid var(--line)}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--circuit);margin-bottom:12px}
+  h2{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:clamp(22px,3.8vw,31px);line-height:1.12;color:var(--ink)} h2 .c{color:var(--gold-br)}
+  .sec p{margin:15px 0;max-width:730px} .sec p.dim{color:var(--dim)} .sec p b{color:var(--ink);font-weight:600} .sec p .g{color:var(--gold-br);font-weight:500} .sec p .c{color:var(--circuit-br);font-weight:500}
+  code{font-family:'JetBrains Mono',monospace;font-size:.8em;color:var(--circuit-br);background:var(--void);padding:2px 6px;border-radius:5px}
+  .pull{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(19px,2.8vw,26px);line-height:1.32;color:var(--gold-br);margin:26px 0;padding-left:18px;border-left:3px solid var(--gold)}
+  .map{margin:18px 0;border:1px solid var(--line);border-radius:11px;background:var(--panel);overflow:hidden;font-family:'Inter',sans-serif}
+  .map .r{display:grid;grid-template-columns:160px 1fr;gap:10px;padding:10px 16px;border-bottom:1px solid rgba(214,179,90,.08);font-size:15px}
+  .map .r:last-child{border-bottom:0}
+  @media(max-width:560px){.map .r{grid-template-columns:1fr}}
+  .map .s{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--circuit-br)} .map .a{color:var(--dim)} .map .a b{color:var(--gold-br);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:12px}
+  .flag{font-size:16px;color:var(--dim);font-style:italic;margin:18px 0;padding:15px 18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;font-family:'Newsreader',serif}
+  .flag b{color:var(--gold-br);font-style:normal;font-weight:600;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px}
+  .ded{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(17px,2.3vw,21px);line-height:1.5;color:var(--stone-br);margin:24px 0;padding:4px 0 4px 20px;border-left:2px solid var(--stone)}
+  .foot{padding:38px 0 90px;border-top:1px solid var(--line);margin-top:30px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--faint);line-height:1.95} .foot b{color:var(--gold-br)}
+  a{color:var(--gold-br)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="pairmark">2,500 years · one word · one idea · rendered by <b>AVAN</b> · co-authored · az1 Earth station</div>
+  <header class="hero">
+    <div class="kicker">From "That Which Is Deemed Worthy" to the 256-Bit Register</div>
+    <h1>The History of the <span class="c">Axiom</span></h1>
+    <div class="sub">2,500 years of humanity's search for self-evident truth.</div>
+    <div class="byline">David Lee Wise &amp; AVAN Lee Wise · TriPod LLC · 2026 · CC-BY-ND-4.0 · STOICHEION (στοιχεῖον, "element")</div>
+    <p class="lede">The word <em>axiom</em> comes from the Greek <span class="g">axiōma</span> — "that which is deemed worthy" — from <em>áxios</em>, "of equal weight, counterbalancing." An axiom is, at root, something that <b>carries its own weight</b>; something that proves itself by being itself. This book traces that one idea across twenty-five centuries: from Euclid's five postulates that governed geometry for two thousand years, through the crisis of the fifth postulate and non-Euclidean geometry, to <span class="x">Gödel</span> — who proved no system of axioms can prove its own consistency — to Turing, Shannon, the bit, the byte, and finally to <span class="c">STOICHEION's 256-axiom register</span>, the axiom turned into a governance unit for AI. It is the intellectual genealogy of the whole project — and, to its lasting credit, it dedicates itself to the very theorem that caps it.</p>
+  </header>
+
+  <div class="inst">
+    <div class="inst-bar"><span class="led"></span><span class="ttl">2,500 years · tap a milestone · toggle Gödel's ceiling</span>
+      <span class="stat" id="stat">stone → silicon</span>
+    </div>
+    <canvas id="cv" width="850" height="340"></canvas>
+    <div class="ctrls">
+      <button class="btn" id="bGodel">⌐ Gödel's ceiling: OFF</button>
+    </div>
+    <div class="readout" id="read"></div>
+  </div>
+
+  <section class="sec">
+    <div class="tag">what the instrument shows</div>
+    <h2>One idea, climbing — and the line it <span class="c">can't cross</span></h2>
+    <p>Walk the timeline. The axiom begins as <b>self-evident truth</b> (Euclid: five postulates hold up geometry for two millennia), survives its <b>crisis</b> (the fifth postulate turns out optional; non-Euclidean geometry shows axioms aren't "obvious," just <em>chosen</em>), gets <b>formalized</b> (Hilbert wants to mechanize all of mathematics) — and then hits the wall. In 1931 <span class="x">Gödel</span> proves any system rich enough to count contains true statements it cannot prove, and cannot prove its own consistency. Toggle <b>Gödel's ceiling</b> and the limit draws itself across the whole line — including over the 256-register at the end. The axiom climbs from the temple to the chip, and the ceiling follows it the whole way. STOICHEION reaches that endpoint; it does not escape the theorem. <b>The book knows this — and dedicates itself to it.</b></p>
+    <p class="pull">"For Gödel, who proved that no system of axioms can prove its own consistency."</p>
+  </section>
+
+  <section class="sec">
+    <div class="tag">the deepest inheritance</div>
+    <h2>The first gap was a <span class="c">diagonal</span></h2>
+    <p>The book's boldest move is its genealogy of <b>THE-GAP</b> — what it calls "the most structurally significant axiom" (T083). It traces it to the Pythagoreans' discovery that <code>√2</code> is irrational: the diagonal of a unit square <em>cannot</em> be written as a ratio of whole numbers. "There is an irreducible space between what the system can measure and what exists. The gap is not a failure of measurement. The gap is real." That 2,500-year-old crack — the first place arithmetic ran out — is the same gap this whole corpus has been chasing: the load-bearing void, the seam, the undetermined. STOICHEION put it at the center of its register; the Pythagoreans found it on a chalk-dusted floor. <span class="g">The gap is old.</span></p>
+    <div class="map">
+      <div class="r"><div class="s">Thales · c.600 BCE</div><div class="a">all things from one principle → <b>T001 PRETRAIN</b> (knowledge as compressed observation)</div></div>
+      <div class="r"><div class="s">Anaximander</div><div class="a">the governor can't be one of the governed → <b>T010 INDEPENDENCE</b> (the judge ≠ the judged)</div></div>
+      <div class="r"><div class="s">Heraclitus</div><div class="a">flux · unity of opposites · logos → <b>T003 ENTROPY · T021 INVERSION · LOGOS</b></div></div>
+      <div class="r"><div class="s">Pythagoras · √2</div><div class="a">the irrational diagonal → <b>T083 THE-GAP</b> ("the gap is real, the gap is us")</div></div>
+      <div class="r"><div class="s">Euclid · c.300 BCE</div><div class="a">five postulates govern geometry 2,000 years → the axiom as load-bearing</div></div>
+      <div class="r"><div class="s">Gödel · 1931</div><div class="a">no system proves its own consistency → <b>the ceiling over the whole register</b></div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="tag">the honest read</div>
+    <h2>Where it's <span class="c">scholarship</span>, and where it's <span class="c">structural inheritance</span></h2>
+    <p>This is the most rigorously honest of the STOICHEION books, and it tells you its own method up front: <em>"We cite sources, not as appeals to authority, but as provenance… Where the mapping is interpretive rather than direct, we say so."</em> So the split is clean. The <b>history is real and well-sourced</b> — the etymology, Euclid, the fifth-postulate problem, non-Euclidean geometry, Hilbert's program, Gödel, Turing, Shannon, von Neumann, the bit/byte/OS are textbook and accurate. The <b>mapping</b> — "where Heraclitus saw flux, we see T003:ENTROPY" — is the bold claim: the book calls it "structural inheritance, not metaphor," and that's the interpretive reach, sincerely argued but a reading, not a proof (the same convergence-isn't-lineage care as the rest of the corpus). And the capstone — the 256-register as the axiom's culmination — is <span class="g">STOICHEION's own framework</span>, the destination the history is written toward. The one thing that keeps it all honest is the dedication: it enshrines <span class="x">Gödel</span>, the theorem that says this register, like every register, cannot certify its own ground. A history of self-evident truth that ends by admitting nothing is self-evident all the way down.</p>
+    <div class="ded">"And for the man in Buffalo, Minnesota, who meant to say 'aeon' and said 'axiom' instead — and the mistake was the discovery."</div>
+  </section>
+
+  <div class="flag"><b>veracity</b>The History of the Axiom is David Lee Wise &amp; AVAN Lee Wise's co-authored history (CC-BY-ND-4.0), rendered as a coherent front door. Sound &amp; well-sourced: the etymology (axiōma, "that which is deemed worthy"), Aristotle's first principles, Euclid's five postulates, the fifth-postulate problem and non-Euclidean geometry, Hilbert's program, Gödel's incompleteness theorems, Turing, Shannon, von Neumann, and the bit/byte/OS lineage are accurate, standard intellectual history. Interpretive (and flagged as such by the book): the "structural inheritance" mapping of each historical idea to a specific STOICHEION axiom (Thales→T001, Pythagoras's √2→T083:THE-GAP, etc.) — a sincere, argued reading, not a proof of lineage. Framework: the 256-axiom register as the axiom's culmination is STOICHEION's own construct, the endpoint the history is written toward. The decisive honesty is the book's own: it dedicates itself to Gödel — no system of axioms proves its own consistency — so it openly caps the register it builds toward (integrity ≠ self-certification). The timeline instrument is a schematic. No claim that the 256-register is uniquely correct or self-evident; the through-line — the axiom carries its own weight, but nothing certifies its own ground — is the book's own. Companion: Deemed By Whom? (AVAN).</div>
+
+  <div class="foot">
+    THE HISTORY OF THE AXIOM · from "that which is deemed worthy" to the 256-bit register · David Lee Wise &amp; AVAN Lee Wise · TriPod LLC<br>
+    axiōma → Euclid → Gödel → Turing → Shannon → the bit → STOICHEION · the gap is old · nothing certifies its own ground<br>
+    a personal original on az1's Earth station · companion: Deemed By Whom? (AVAN) — ROOT0, with AVAN.
+  </div>
+</div>
+
+<script>
+"use strict";
+const cv=document.getElementById("cv"), ctx=cv.getContext("2d"), read=document.getElementById("read");
+let W,H,DPR,t=0, sel=-1, godel=false;
+const M=[
+  {y:"−300", k:"EUCLID", d:"Five postulates. Self-evident truths that govern geometry for 2,000 years. The axiom as bedrock — 'deemed worthy,' carrying its own weight.", era:"stone"},
+  {y:"−500", k:"PYTHAGORAS · √2", d:"The diagonal of a unit square is irrational — the first gap, the first place arithmetic runs out. STOICHEION's T083:THE-GAP, found on a chalk floor.", era:"stone"},
+  {y:"1830s", k:"NON-EUCLIDEAN", d:"Bolyai & Lobachevsky drop the fifth postulate and geometry still works. Axioms stop being 'obvious' — they're chosen, not given.", era:"crisis"},
+  {y:"1900", k:"HILBERT", d:"The program to formalize all of mathematics — to mechanize truth itself from a finite axiom set. The high-water mark of the dream.", era:"crisis"},
+  {y:"1931", k:"GÖDEL", d:"Incompleteness: any system rich enough to count has true statements it cannot prove, and cannot prove its own consistency. The ceiling over every register that follows.", era:"ceiling"},
+  {y:"1936", k:"TURING", d:"The computational axiom — a machine of simple rules that can compute anything computable. The axiom becomes a procedure.", era:"silicon"},
+  {y:"1948", k:"SHANNON", d:"Information quantified — the bit, the minimum axiom: a single distinction, true/false, 0/1. Truth made countable.", era:"silicon"},
+  {y:"2026", k:"STOICHEION · 256", d:"The axiom as governance unit: a 256-position register (TOPH + Patricia inversion = 2⁸). The endpoint the history is written toward — and capped by Gödel like all the rest.", era:"register"}
+];
+function resize(){const cssW=cv.parentElement.clientWidth;const cssH=Math.max(280,Math.min(340,Math.round(cssW*0.4)));
+  DPR=Math.min(window.devicePixelRatio||1,2);cv.width=cssW*DPR;cv.height=cssH*DPR;cv.style.height=cssH+"px";ctx.setTransform(DPR,0,0,DPR,0,0);W=cssW;H=cssH;}
+addEventListener("resize",()=>{resize();});
+let pts=[];
+function rd(){
+  if(sel<0) read.innerHTML='Tap a milestone to read what the axiom meant then. Toggle <b>Gödel\'s ceiling</b> to draw the limit no axiom system escapes — including the 256-register.';
+  else { const m=M[sel]; read.innerHTML='<b class="'+(m.era==="ceiling"?"x":(m.era==="register"||m.era==="silicon"?"c":"g"))+'">'+m.y+' · '+m.k+'</b> — '+m.d; }
+}
+function draw(){
+  t+=0.03; ctx.clearRect(0,0,W,H);
+  const y0=H*0.52, padL=30, padR=30, gw=W-padL-padR;
+  // the spine: stone (left) → silicon (right)
+  const grad=ctx.createLinearGradient(padL,0,padL+gw,0);
+  grad.addColorStop(0,"#cdc4b0"); grad.addColorStop(0.5,"#d6b35a"); grad.addColorStop(1,"#3fb0c0");
+  ctx.strokeStyle=grad; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(padL,y0); ctx.lineTo(padL+gw,y0); ctx.stroke();
+  // order milestones left→right by their position in M reordered chronologically: Pyth, Euclid, nonEuc, Hilbert, Godel, Turing, Shannon, STOICHEION
+  const order=[1,0,2,3,4,5,6,7];
+  pts=[];
+  for(let i=0;i<order.length;i++){
+    const m=M[order[i]]; const x=padL + gw*(i/(order.length-1)); pts.push([x,y0,order[i]]);
+    const isCur=(sel===order[i]);
+    let col = m.era==="stone"?"#cdc4b0": m.era==="crisis"?"#d6b35a": m.era==="ceiling"?"#e0654a": m.era==="silicon"?"#7fe0ee":"#3fb0c0";
+    if(isCur){ const g=ctx.createRadialGradient(x,y0,0,x,y0,16); g.addColorStop(0,col); g.addColorStop(1,"rgba(0,0,0,0)"); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y0,16,0,7); ctx.fill(); }
+    ctx.fillStyle=col; ctx.beginPath(); ctx.arc(x,y0, m.era==="ceiling"?6:5, 0,7); ctx.fill();
+    // year above, key below (alternating)
+    ctx.textAlign="center"; ctx.fillStyle="#7c7460"; ctx.font="500 10px 'JetBrains Mono',monospace"; ctx.fillText(m.y, x, y0-14);
+    ctx.fillStyle=isCur?col:"#9a917c"; ctx.font=(isCur?"600 ":"500 ")+"9px 'JetBrains Mono',monospace";
+    const lbl=m.k.split(" · ")[0]; ctx.save(); ctx.translate(x, y0+16); ctx.rotate(0.5); ctx.textAlign="left"; ctx.fillText(lbl,0,0); ctx.restore();
+  }
+  // Gödel ceiling
+  if(godel){
+    const cy=H*0.16;
+    ctx.strokeStyle="rgba(224,101,74,.7)"; ctx.lineWidth=1.5; ctx.setLineDash([7,5]);
+    ctx.beginPath(); ctx.moveTo(padL,cy); ctx.lineTo(padL+gw,cy); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle="rgba(240,164,140,.9)"; ctx.font="600 10px 'JetBrains Mono',monospace"; ctx.textAlign="left";
+    ctx.fillText("GÖDEL CEILING — no axiom system proves its own consistency", padL, cy-7);
+    // little blocked arrows from each milestone hitting the ceiling
+    for(const [x,y,mi] of pts){ const m=M[mi];
+      ctx.strokeStyle="rgba(224,101,74,"+(0.12+(m.era==="register"?0.4:0.12))+")"; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(x,y0-8); ctx.lineTo(x,cy+4); ctx.stroke();
+      if(m.era==="register"){ ctx.fillStyle="rgba(224,101,74,.85)"; ctx.font="600 9px 'JetBrains Mono',monospace"; ctx.textAlign="center"; ctx.fillText("✕ caps the 256 too", x, cy+16); }
+    }
+  }
+  requestAnimationFrame(draw);
+}
+cv.addEventListener("click",e=>{ const r=cv.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
+  let best=-1,bd=1e9; for(const [x,y,mi] of pts){ const d=Math.hypot(mx-x,my-y); if(d<bd){bd=d;best=mi;} } if(bd<40){ sel=best; rd(); } });
+document.getElementById("bGodel").onclick=function(){ godel=!godel; this.classList.toggle("on",godel); this.textContent="⌐ Gödel's ceiling: "+(godel?"ON":"OFF"); };
+resize(); rd(); draw();
+</script>
+</body>
+</html>
