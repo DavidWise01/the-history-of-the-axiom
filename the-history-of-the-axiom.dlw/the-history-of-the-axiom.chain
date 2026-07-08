@@ -4,6 +4,6 @@ slug  : the-history-of-the-axiom
 seal  : 34276398e84d3c0b8ffd907b4e53495942f7651adb18a9c256779a54d18b95cb
 prev  : 5466a1a174c2f4c673b1048301e4d139f630aa891f1e98bff71a3d6bc92d7397
 link  : 939e4d620b3fde723e774ee57c3f9aad26c3af5f3e1c07a0691a42fe1e701bb9
-head  : 3447d3a0533aaf1e29a8bdc67a9774884fb3ae9dbc8a17064b7a008ca3c4ec90
+head  : 13f9ace173ef2e60af38912ba329b4afcb5a38b84a0e4495e8d30327f8c99cc2
 
 — the tether: link = sha256(index|slug|seal|prev). the chain head commits to the whole corpus.
